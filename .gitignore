@@ -1,0 +1,6 @@
+# Backup folders
+backup_v2_working/
+
+# OS files
+.DS_Store
+Thumbs.db
