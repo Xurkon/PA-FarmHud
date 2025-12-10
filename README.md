@@ -2,6 +2,8 @@
 
 # 🌾 FarmHud
 
+[![Documentation](https://img.shields.io/badge/📖_Docs-GitHub_Pages-2ea44f?style=for-the-badge)](https://xurkon.github.io/PA-FarmHud/)
+
 <img src="https://img.shields.io/badge/WoW-3.3.5a-blue?style=for-the-badge&logo=battle.net&logoColor=white" alt="WoW 3.3.5a">
 <img src="https://img.shields.io/badge/Version-2.0.0--alpha-orange?style=for-the-badge" alt="Version 2.0.0-alpha">
 <img src="https://img.shields.io/badge/Project-Ascension-purple?style=for-the-badge" alt="Project Ascension">
@@ -158,3 +160,5 @@
 <sub>This addon is open source and provided as-is. Not affiliated with Blizzard Entertainment.</sub>
 
 </div>
+
+[Documentation](docs/index.html)
