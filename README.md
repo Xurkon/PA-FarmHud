@@ -3,10 +3,19 @@
 # 🌾 FarmHud
 
 <img src="https://img.shields.io/badge/WoW-3.3.5a-blue?style=for-the-badge&logo=battle.net&logoColor=white" alt="WoW 3.3.5a">
-<img src="https://img.shields.io/badge/Version-2.0.0-green?style=for-the-badge" alt="Version 2.0.0">
+<img src="https://img.shields.io/badge/Version-2.0.0--alpha-orange?style=for-the-badge" alt="Version 2.0.0-alpha">
 <img src="https://img.shields.io/badge/Project-Ascension-purple?style=for-the-badge" alt="Project Ascension">
+<img src="https://img.shields.io/badge/Status-Work%20In%20Progress-red?style=for-the-badge" alt="WIP">
 
 **A transparent HUD overlay for efficiently farming herbs, ore, and other gathering nodes**
+
+<br>
+
+> ⚠️ **WORK IN PROGRESS** ⚠️
+>
+> This addon is currently under active development. It is based on an edited 3.3.5a version,
+> **not** a complete backport from retail. Many features are still being built and may not
+> function correctly. Use at your own risk!
 
 <br>
 
@@ -23,6 +32,7 @@
 <td width="50%">
 
 ### 🗺️ HUD Overlay
+
 - Transparent minimap overlay centered on screen
 - See gathering nodes without opening the map
 - Adjustable opacity and scale
@@ -31,6 +41,7 @@
 <td width="50%">
 
 ### 📍 TrailPath Module
+
 - Drop pins to mark your farming route
 - Pins remain static at world positions
 - Configurable fade timer
@@ -41,6 +52,7 @@
 <td width="50%">
 
 ### 🔌 Addon Integration
+
 - **GatherMate2** - Display herb/ore nodes
 - **Routes** - Show your farming routes
 - **HandyNotes** - Display custom markers
@@ -51,6 +63,7 @@
 <td width="50%">
 
 ### ⚙️ Customization
+
 - Configurable keybindings
 - Adjustable HUD size and position
 - Cardinal direction indicators
@@ -87,6 +100,7 @@
 ### 🔄 Complete Backport from Retail to 3.3.5a
 
 **Core Changes:**
+
 - ✅ Updated `.toc` to interface version 30300
 - ✅ Replaced modern `C_Map` API with 3.3.5a equivalents
 - ✅ Created polyfills for `C_Map`, `C_Minimap`, `C_Timer`, `C_AddOns`
@@ -94,12 +108,14 @@
 - ✅ Removed retail-specific checks (`WOW_PROJECT_ID`, `EditModeManagerFrame`)
 
 **Fixes:**
+
 - 🔧 Fixed cardinal points positioning on HUD
 - 🔧 TrailPath: Pins now remain static at world positions
 - 🔧 TrailPath: Corrected minimap/HUD trail positioning and scaling
 - 🔧 TrailPath: Proper clipping for pins outside visible range
 
 **Technical:**
+
 - 📁 Created `Compat.lua` with API polyfills
 - 📁 Modified `FarmHud.xml` for standard script blocks
 - 📁 Updated event handling for 3.3.5a system
@@ -110,6 +126,7 @@
 <summary><b>v1.1.0</b> - Original Release <i>(May 4, 2011)</i></summary>
 
 **Changes:**
+
 - 🔧 Fixed config dialog
 - ➕ Added `_NPCScan.Overlay` support
 
