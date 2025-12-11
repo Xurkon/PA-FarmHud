@@ -5,7 +5,7 @@
 [![Documentation](https://img.shields.io/badge/📖_Docs-GitHub_Pages-2ea44f?style=for-the-badge)](https://xurkon.github.io/PA-FarmHud/)
 
 <img src="https://img.shields.io/badge/WoW-3.3.5a-blue?style=for-the-badge&logo=battle.net&logoColor=white" alt="WoW 3.3.5a">
-<img src="https://img.shields.io/badge/Version-2.0.0--alpha-orange?style=for-the-badge" alt="Version 2.0.0-alpha">
+<img src="https://img.shields.io/badge/Version-2.0.1-orange?style=for-the-badge" alt="Version 2.0.1">
 <img src="https://img.shields.io/badge/Project-Ascension-purple?style=for-the-badge" alt="Project Ascension">
 <img src="https://img.shields.io/badge/Status-Work%20In%20Progress-red?style=for-the-badge" alt="WIP">
 
