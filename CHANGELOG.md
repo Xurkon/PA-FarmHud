@@ -1,6 +1,15 @@
 # FarmHud Changelog
 
-## [2.0.7] - 2026-01-01
+## [2.0.8] - 2026-01-20
+ 
+ ### Bug Fixes
+ 
+ - **Fixed LootCollector Pin Scaling** - Corrected a scaling mismatch where LootCollector pins would appear to "slide" or move with the player because they weren't inheriting the HUD's 1.4x scale.
+ - **Fixed LootCollector Dynamic Pins** - Added a hook to LootCollector's `UpdateMinimap` to ensure that newly created pins (from spatial hashing) are immediately parented to the HUD proxy, resolving issues where some pins would act inconsistently or rotate incorrectly.
+ 
+ ---
+ 
+ ## [2.0.7] - 2026-01-01
 
 ### New Features
 

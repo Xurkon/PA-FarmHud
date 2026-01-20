@@ -344,36 +344,57 @@ local function ReparentAddonPins(targetParent)
     if LootCollector and FarmHudDB.show_lootcollector ~= false then
         pcall(function()
             local Map = LootCollector:GetModule("Map", true)
-            if Map and Map._mmPins then
-                -- Position proxy frame to match Minimap exactly
-                LootCollectorProxy:ClearAllPoints()
-                LootCollectorProxy:SetAllPoints(Minimap)
-                LootCollectorProxy:SetScale(1) -- Proxy inherits Minimap's scale via SetAllPoints
-                LootCollectorProxy:Show()
-                
-                for _, pin in ipairs(Map._mmPins) do
-                    if pin then
-                        -- Store original parent
-                        if not lootCollectorState.pinsHooked[pin] then
-                            lootCollectorState.pinsHooked[pin] = {
-                                originalParent = pin:GetParent(),
-                            }
-                            
-                            -- Hook SetPoint to redirect Minimap anchors to our proxy
-                            local originalSetPoint = pin.SetPoint
-                            pin.SetPoint = function(self, point, relativeTo, relativePoint, x, y)
-                                -- If anchoring to Minimap, redirect to our proxy
-                                if relativeTo == Minimap and LootCollectorProxy:IsShown() then
-                                    return originalSetPoint(self, point, LootCollectorProxy, relativePoint, x, y)
+            if Map then
+                -- Helper to process pins
+                local function ProcessLootCollectorPins()
+                    if not Map._mmPins then return end
+                    
+                    if not LootCollectorProxy:IsShown() and FarmHudMapCluster:IsShown() then
+                         LootCollectorProxy:ClearAllPoints()
+                         LootCollectorProxy:SetAllPoints(Minimap)
+                         LootCollectorProxy:SetScale(Minimap:GetScale())
+                         LootCollectorProxy:Show()
+                    end
+
+                    for _, pin in ipairs(Map._mmPins) do
+                        if pin then
+                            -- Store original parent
+                            if not lootCollectorState.pinsHooked[pin] then
+                                lootCollectorState.pinsHooked[pin] = {
+                                    originalParent = pin:GetParent(),
+                                }
+                                
+                                -- Hook SetPoint to redirect Minimap anchors to our proxy
+                                local originalSetPoint = pin.SetPoint
+                                pin.SetPoint = function(self, point, relativeTo, relativePoint, x, y)
+                                    -- If anchoring to Minimap, redirect to our proxy
+                                    if relativeTo == Minimap and LootCollectorProxy:IsShown() then
+                                        return originalSetPoint(self, point, LootCollectorProxy, relativePoint, x, y)
+                                    end
+                                    return originalSetPoint(self, point, relativeTo, relativePoint, x, y)
                                 end
-                                return originalSetPoint(self, point, relativeTo, relativePoint, x, y)
+                            end
+                            
+                            -- Reparent pin to proxy (visible parent)
+                            if pin:GetParent() ~= LootCollectorProxy then
+                                pin:SetParent(LootCollectorProxy)
+                                pin:SetFrameStrata("HIGH")
                             end
                         end
-                        
-                        -- Reparent pin to proxy (visible parent)
-                        pin:SetParent(LootCollectorProxy)
-                        pin:SetFrameStrata("HIGH")
                     end
+                end
+
+                -- Initial processing
+                ProcessLootCollectorPins()
+                
+                -- Hook UpdateMinimap to catch new pins
+                if not lootCollectorState.updateHooked then
+                    hooksecurefunc(Map, "UpdateMinimap", function()
+                        if FarmHudMapCluster:IsShown() then
+                            ProcessLootCollectorPins()
+                        end
+                    end)
+                    lootCollectorState.updateHooked = true
                 end
                 
                 -- Trigger LootCollector to refresh pin positions (now anchored to proxy)
@@ -544,6 +565,7 @@ local function OnUpdate(self, elapsed)
         LootCollectorProxy:ClearAllPoints()
         LootCollectorProxy:SetPoint("CENTER", Minimap, "CENTER", 0, 0)
         LootCollectorProxy:SetSize(Minimap:GetSize())
+        LootCollectorProxy:SetScale(Minimap:GetScale())
     end
 
     -- Update cardinal direction positions based on player facing
@@ -938,6 +960,12 @@ local function OnShow()
     AddonPinProxy:SetPoint("CENTER", FarmHudMapCluster, "CENTER", 0, 0)
     AddonPinProxy:SetScale(Minimap:GetScale())
     AddonPinProxy:SetSize(Minimap:GetWidth(), Minimap:GetHeight())
+
+    -- Also update LootCollectorProxy scale
+    if LootCollectorProxy:IsShown() then
+        LootCollectorProxy:SetScale(Minimap:GetScale())
+        LootCollectorProxy:SetSize(Minimap:GetWidth(), Minimap:GetHeight())
+    end
 
     -- Disable minimap mouse on HUD
     Minimap:EnableMouse(false)
