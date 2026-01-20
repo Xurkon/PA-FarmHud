@@ -345,7 +345,7 @@
         <p class="subtitle">Turn your minimap into a transparent HUD for farming resources</p>
 
         <div class="badges">
-            <span class="badge version">v2.0.7</span>
+            <span class="badge version">v2.0.8</span>
             <span class="badge wow">WoW 3.3.5a</span>
             <span class="badge platform">Project Ascension</span>
         </div>
@@ -399,7 +399,8 @@
                 </div>
                 <div class="feature-card">
                     <h3>🔌 Addon Pins Toggle</h3>
-                    <p>New options panel to enable/disable specific addon pins on the HUD (Questie, GatherMate2, Routes, etc).</p>
+                    <p>New options panel to enable/disable specific addon pins on the HUD (Questie, GatherMate2, Routes,
+                        etc).</p>
                 </div>
             </div>
         </section>
@@ -459,41 +460,18 @@
         <section>
             <h2>Latest Changes</h2>
             <div class="changelog">
-                <h3>v2.0.7 - January 1, 2026</h3>
+                <h3 style="margin-top: 20px;">v2.0.8 - January 20, 2026</h3>
                 <ul>
-                    <li>Added Questie 3.3.5 integration - quest objective pins now display on FarmHud</li>
-                    <li>New Addon Pins options section to toggle addon pins on/off</li>
-                    <li>Fixed Questie pin rotation - pins stay fixed in world position</li>
-                    <li>Added SetZoom to AddonPinProxy for Questie compatibility</li>
-                </ul>
-
-                <h3 style="margin-top: 20px;">v2.0.6 - December 25, 2025</h3>
-                <ul>
-                    <li>Fixed stack overflow with MinimapButtonFrame - Added recursion guard for GetChildren iteration
+                    <li>Fixed LootCollector Pin Scaling - Corrected a scaling mismatch where LootCollector pins would
+                        appear to "slide" or move with the player because they weren't inheriting the HUD's 1.4x scale.
                     </li>
+                    <li>Fixed LootCollector Dynamic Pins - Added a hook to LootCollector's UpdateMinimap to ensure that
+                        newly created pins are immediately parented to the HUD proxy.</li>
                 </ul>
 
-                <h3 style="margin-top: 20px;">v2.0.5 - December 15, 2025</h3>
-                <ul>
-                    <li>Fixed TrailPath pins not appearing on HUD</li>
-                </ul>
+                <h3 style="margin-top: 20px;">v2.0.7 - January 1, 2026</h3>
 
-                <h3 style="margin-top: 20px;">v2.0.8 - December 20, 2025</h3>
-                <ul>
-                    <li>LootCollector pins now display correctly on the FarmHud HUD</li>
-                </ul>
 
-                <h3 style="margin-top: 20px;">v2.0.7 - December 20, 2025</h3>
-                <ul>
-                    <li>Added Carbonite compatibility - GatherMate2 and Routes pins now work when Carbonite is active
-                    </li>
-                    <li>Carbonite's minimap control is temporarily disabled during HUD mode</li>
-                </ul>
-
-                <h3 style="margin-top: 20px;">v2.0.5 - December 15, 2025</h3>
-                <ul>
-                    <li>Fixed TrailPath pins not appearing on HUD</li>
-                </ul>
 
                 <h3 style="margin-top: 20px;">v2.0.4 - December 15, 2025</h3>
                 <ul>
