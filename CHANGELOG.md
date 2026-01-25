@@ -1,5 +1,13 @@
 # FarmHud Changelog
 
+## [2.0.9] - 2026-01-25
+
+### Bug Fixes
+
+- **Fixed Camera Rotation Block** - Resolved an issue where closing the HUD would leave invisible frames (FarmHudMapCluster and FarmHud) interactive, preventing the user from right-clicking to rotate the camera in the center of the screen.
+
+---
+
 ## [2.0.8] - 2026-01-20
  
  ### Bug Fixes

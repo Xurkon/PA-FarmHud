@@ -970,6 +970,14 @@ local function OnShow()
     -- Disable minimap mouse on HUD
     Minimap:EnableMouse(false)
     Minimap:EnableMouseWheel(false) -- Prevent scroll wheel from zooming
+    
+    -- Ensure HUD frames don't block mouse
+    FarmHudMapCluster:EnableMouse(false)
+    FarmHud:EnableMouse(false)
+    if _G.FarmHudMinimapDummy then
+        _G.FarmHudMinimapDummy:Hide()
+        _G.FarmHudMinimapDummy:EnableMouse(false)
+    end
 
     -- Hide original minimap cluster
     MinimapCluster:Hide()
@@ -1030,6 +1038,14 @@ local function OnHide()
     -- Re-enable minimap mouse
     Minimap:EnableMouse(true)
     Minimap:EnableMouseWheel(true) -- Restore scroll wheel zooming
+
+    -- Ensure HUD frames don't block mouse
+    FarmHudMapCluster:EnableMouse(false)
+    FarmHud:EnableMouse(false)
+    if _G.FarmHudMinimapDummy then
+        _G.FarmHudMinimapDummy:Hide()
+        _G.FarmHudMinimapDummy:EnableMouse(false)
+    end
 
     -- Show original minimap cluster
     MinimapCluster:Show()
